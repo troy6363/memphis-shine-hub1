@@ -51,18 +51,18 @@ const services = [
 
 const testimonials = [
   {
+    name: "Randy Harris",
+    text: "Good customer service and do a very good job 👍👍 Top Wash Approved...",
+    rating: 5,
+  },
+  {
+    name: "Cristean Crockett",
+    text: "Great customer service!! Very professional!! Top Notch Work",
+    rating: 5,
+  },
+  {
     name: "Marcus J.",
-    text: "Best detail I've ever had on my Corvette. These guys treat your car like it's their own. Highly recommend!",
-    rating: 5,
-  },
-  {
-    name: "Sarah T.",
-    text: "The Premier Package was worth every penny. My SUV looks brand new inside and out. Professional service!",
-    rating: 5,
-  },
-  {
-    name: "David M.",
-    text: "They came to my office and detailed my BMW while I worked. Convenient and exceptional quality.",
+    text: "Top Notch service. These guys treat your car like it's their own. Highly recommend!",
     rating: 5,
   },
 ];
@@ -75,37 +75,144 @@ const trustBadges = [
 ];
 
 const galleryImages = [
-  { type: "image", src: camaroImage, alt: "Camaro SS Detailing" },
-  { type: "image", src: audiImage, alt: "Audi Mobile Service" },
-  { type: "image", src: bmwImage, alt: "BMW Interior Detail" },
-  { type: "image", src: shopInterior, alt: "Shop Interior" },
-  { type: "video", src: "/assets/premierpolishing1.mp4?v=3", alt: "Premier Polishing Process" },
-  { type: "image", src: toyotaAvalon, alt: "Toyota Avalon Detail" },
-  { type: "image", src: sprinterShop, alt: "Sprinter Van in Shop" },
-  { type: "image", src: ram2500White, alt: "White Ram 2500 Detail" },
-  { type: "image", src: shopExterior, alt: "Shop Exterior" },
+  { type: "image", src: "/assets/gmb-gallery-1.jpg", alt: "Top Wash Approved Exterior" },
+  { type: "image", src: "/assets/gmb-gallery-2.jpg", alt: "Top Wash Approved Detail" },
+  { type: "image", src: "/assets/gmb-gallery-3.jpg", alt: "Top Wash Approved Interior" },
+  { type: "image", src: "/assets/truck2.webp", alt: "Detail Truck 2" },
+  { type: "video", src: "/assets/premierpolishing1-1.mp4", alt: "Top Wash Approved Process" },
+  { type: "image", src: "/assets/car3.webp", alt: "Detail Car 3" },
+  { type: "image", src: "/assets/truck1.png", alt: "Detail Truck 1" },
+  { type: "image", src: "/assets/truck1.webp", alt: "Detail Truck 1" },
+  { type: "image", src: "/assets/car5.webp", alt: "Detail Car 5" },
 ];
 
 const Index = () => {
   const galleryRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const galleryVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = galleryVideoRef.current;
+    if (video) {
+      // Set playback speed to 75% (slower)
+      video.playbackRate = 0.75;
+
+      const handleTimeUpdate = () => {
+        const fadePoint = video.duration - 0.5;
+        if (video.currentTime >= fadePoint) {
+          const fadeProgress = (video.currentTime - fadePoint) / 0.5;
+          video.style.opacity = String(1 - (fadeProgress * 0.3));
+        } else if (video.currentTime < 0.5) {
+          video.style.opacity = String(0.7 + (video.currentTime / 0.5) * 0.3);
+        } else {
+          video.style.opacity = '1';
+        }
+      };
+
+      video.addEventListener('timeupdate', handleTimeUpdate);
+      return () => video.removeEventListener('timeupdate', handleTimeUpdate);
+    }
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // --- Hero Sequences ---
+      if (heroRef.current) {
+        const tl = gsap.timeline();
+
+        // 1. Fade up the main text blocks (staggered)
+        tl.to(".hero-text-element", {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+          delay: 0.2
+        });
+
+        // 2. Animate the individual characters of the gradient text (typewriter effect)
+        tl.to(".hero-char-element", {
+          opacity: 1,
+          duration: 0.2, // Increased duration for a smoother fade-in per letter
+          stagger: 0.1, // Increased stagger for a slower typing speed
+          ease: "none",
+        }, "-=0.3"); // Adjusted start time to account for slower typing
+
+        // 3. Keep the subtle breathing effect on the gradient text wrapper
+        gsap.to(".text-red-gradient", {
+          scale: 1.05,
+          duration: 2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 2.5
+        });
+
+        // 4. Subtle magnetic effect for hero buttons
+        const magneticButtons = heroRef.current.querySelectorAll('.button-magnetic-wrapper');
+        magneticButtons.forEach((btn) => {
+          btn.addEventListener('mousemove', (e: any) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            gsap.to(btn, {
+              x: x * 0.2, // Adjust multiplier for strength
+              y: y * 0.2,
+              duration: 0.4,
+              ease: "power2.out"
+            });
+          });
+
+          btn.addEventListener('mouseleave', () => {
+            gsap.to(btn, {
+              x: 0,
+              y: 0,
+              duration: 0.7,
+              ease: "elastic.out(1, 0.3)"
+            });
+          });
+        });
+      }
+
+      // --- Trust Badges Sequence ---
+      const trustBadges = document.querySelectorAll('.gsap-trust-badge');
+      if (trustBadges.length > 0) {
+        gsap.fromTo(
+          trustBadges,
+          { opacity: 0, y: 30, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".trust-badges-container",
+              start: "top 85%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      }
+
+      // --- Gallery Sequences ---
       const items = galleryRef.current?.querySelectorAll('.gallery-item');
       if (items) {
         gsap.fromTo(
           items,
           {
             opacity: 0,
-            y: 60,
-            scale: 0.9,
+            y: 40,
+            scale: 0.95,
           },
           {
             opacity: 1,
             y: 0,
             scale: 1,
             duration: 0.8,
-            stagger: 0.15,
+            stagger: 0.1,
             ease: "power3.out",
             scrollTrigger: {
               trigger: galleryRef.current,
@@ -116,87 +223,130 @@ const Index = () => {
           }
         );
       }
-    }, galleryRef);
 
-    return () => ctx.revert();
+      // --- Testimonials Sequence ---
+      const testimonials = document.querySelectorAll('.gsap-testimonial');
+      if (testimonials.length > 0) {
+        gsap.fromTo(
+          testimonials,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".testimonials-container",
+              start: "top 80%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      }
+
+      // --- CTA Sequence ---
+      const ctaElements = document.querySelectorAll('.gsap-cta');
+      if (ctaElements.length > 0) {
+        gsap.fromTo(
+          ctaElements,
+          { opacity: 0, y: 30, scale: 0.98 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".cta-container",
+              start: "top 85%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      }
+    }); // Scope GSAP to the component
+
+    return () => ctx.revert(); // Cleanup all GSAP animations
   }, []);
 
   return (
     <Layout>
       {/* Hero Section with Scroll Animation */}
-      <HeroScrollAnimation>
-        <div className="container mx-auto px-4 h-full flex items-center">
-          <div className="max-w-2xl">
-            <p className="text-primary font-semibold tracking-widest uppercase mb-4">
-              Memphis' Premier Auto Detailing
-            </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
-              Detailing to{" "}
-              <motion.span
-                className="text-gold-gradient inline-block"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatDelay: 3.5,
-                  ease: "easeInOut",
-                  delay: 3,
-                }}
-              >
-                {"Enhance the Elite".split("").map((char, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.5 + index * 0.1,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-              </motion.span>
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
-              Professional auto detailing for luxury vehicles. We bring showroom quality
-              to your car with meticulous attention to detail.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="text-lg font-semibold px-8">
-                <a href="tel:901-650-8824">
-                  <Phone className="h-5 w-5 mr-2" />
-                  Call (901) 650-8824
-                </a>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="text-lg font-semibold px-8">
-                <Link to="/services">View Services</Link>
-              </Button>
+      <section ref={heroRef} className="relative h-screen w-full overflow-hidden">
+        <video
+          key="/assets/carwash1.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/assets/carwash1.mp4?v=1" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/40 z-20" />
+        <div className="relative z-30 h-full flex items-center">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl text-white hero-content-wrapper">
+              <p className="hero-text-element text-primary font-semibold tracking-widest uppercase mb-4 opacity-0 translate-y-8">
+                Top Wash Approved
+              </p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+                <span className="hero-text-element block opacity-0 translate-y-8">Experience The</span>
+                <span className="text-red-gradient inline-block mt-2">
+                  {"Top Wash Difference".split("").map((char, index) => (
+                    <span
+                      key={index}
+                      className="hero-char-element opacity-0"
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </span>
+                  ))}
+                </span>
+              </h1>
+              <p className="hero-text-element text-base md:text-lg lg:text-xl text-gray-200 mb-8 max-w-xl opacity-0 translate-y-8">
+                Professional auto detailing for all vehicles. We bring showroom quality
+                to your ride with meticulous attention to detail.
+              </p>
+              <div className="hero-text-element flex flex-col sm:flex-row gap-4 opacity-0 translate-y-8">
+                <div className="relative group button-magnetic-wrapper inline-block">
+                  <Button asChild size="lg" className="text-base md:text-lg font-semibold px-6 md:px-8 shadow-xl shadow-primary/30 w-full sm:w-auto relative group overflow-hidden transition-transform duration-300">
+                    <a href="tel:901-677-4116">
+                      <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
+                      <Phone className="h-5 w-5 mr-2" />
+                      Call (901) 677-4116
+                    </a>
+                  </Button>
+                </div>
+                <div className="relative group button-magnetic-wrapper inline-block">
+                  <Button asChild variant="outline" size="lg" className="text-base md:text-lg font-semibold px-6 md:px-8 border-white/20 text-white hover:bg-white/10 w-full sm:w-auto transition-transform duration-300">
+                    <Link to="/services">View Services</Link>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </HeroScrollAnimation>
+      </section>
 
       {/* Trust Badges */}
-      <section className="bg-card border-y border-border py-8">
+      <section className="bg-card border-y border-border py-8 overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+          <div
+            className="grid grid-cols-2 md:grid-cols-4 gap-12 trust-badges-container"
+          >
             {trustBadges.map((badge, i) => (
-              <motion.div
+              <div
                 key={badge.text}
-                className="flex items-center justify-center gap-3"
-                animate={{ scale: [1, 1.08, 1] }}
-                transition={{
-                  duration: 2.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: i * 0.4,
-                }}
+                className="gsap-trust-badge flex items-center justify-center gap-3 p-4 rounded-xl transition-[background-color,box-shadow,color,transform] duration-300 hover:bg-white/5 hover:shadow-[0_0_15px_rgba(255,215,0,0.15)] hover:scale-105 group"
               >
-                <badge.icon className="h-8 w-8 text-primary" />
-                <span className="font-medium text-foreground">{badge.text}</span>
-              </motion.div>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-300 rounded-full" />
+                  <badge.icon className="h-8 w-8 text-primary relative z-10" />
+                </div>
+                <span className="font-medium text-foreground group-hover:text-primary transition-colors">{badge.text}</span>
+              </div>
             ))}
           </div>
         </div>
@@ -212,28 +362,31 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Our <span className="text-gold-gradient">Work</span>
+              Our <span className="text-red-gradient">Work</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              See the Premier Polishing difference. Every vehicle receives meticulous attention to detail.
+              See the Top Wash Approved difference. Every vehicle receives meticulous attention to detail.
             </p>
           </div>
-          <div ref={galleryRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div
+            ref={galleryRef}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
             {galleryImages.map((item, i) => (
               <div
                 key={i}
-                className="gallery-item relative overflow-hidden rounded-lg group"
+                className="gallery-item relative overflow-hidden rounded-xl group shadow-lg shadow-black/20 ring-1 ring-white/5"
               >
+                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-500 z-10 pointer-events-none mix-blend-overlay" />
                 {item.type === "video" ? (
                   <video
+                    ref={galleryVideoRef}
+                    key={item.src}
                     autoPlay
                     muted
                     loop
                     playsInline
-                    className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
-                    ref={(el) => {
-                      if (el) el.playbackRate = 0.7;
-                    }}
+                    className="w-full h-[250px] md:h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out transition-opacity"
                   >
                     <source src={item.src} type="video/mp4" />
                   </video>
@@ -241,7 +394,7 @@ const Index = () => {
                   <img
                     src={item.src}
                     alt={item.alt}
-                    className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[250px] md:h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
                 )}
               </div>
@@ -250,85 +403,75 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials with Video Background */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        {/* Background Video - Aligned with Cards */}
-        <div className="absolute inset-y-0 left-0 right-0 mx-auto w-[94%] max-w-[1400px] z-0">
-          <div className="w-full h-full rounded-3xl overflow-hidden shadow-2xl relative">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-              ref={(el) => {
-                if (el) el.playbackRate = 0.8;
-              }}
-            >
-              <source src="/assets/premierpolishing.mp4" type="video/mp4" />
-            </video>
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black/20 bg-gradient-to-t from-black/60 via-black/10 to-black/20" />
-          </div>
-        </div>
-
+      {/* Testimonials Section */}
+      <section className="relative py-24 md:py-32 bg-background border-y border-border overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              What Our <span className="text-gold-gradient">Clients Say</span>
+          <div className="text-center mb-12 testimonials-header">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              What Our <span className="text-red-gradient">Clients Say</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 testimonials-container">
             {testimonials.map((review) => (
-              <Card key={review.name} className="bg-black/40 border-gold/20 backdrop-blur-sm">
-                <CardContent className="p-6">
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <p className="text-white mb-4 italic">"{review.text}"</p>
-                  <p className="text-primary font-semibold">{review.name}</p>
-                </CardContent>
-              </Card>
+              <div
+                key={review.name}
+                className="gsap-testimonial transition-transform duration-300 hover:-translate-y-2 h-full"
+              >
+                <Card className="bg-card border-border hover:border-white/10 shadow-xl hover:shadow-2xl transition-[background-color,border-color,box-shadow] duration-300 h-full group">
+                  <CardContent className="p-8 relative">
+                    <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-5 transition-opacity duration-300">
+                      <Star className="w-24 h-24 text-foreground" />
+                    </div>
+                    <div className="flex gap-1 mb-6 relative z-10">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <Star key={i} className="h-5 w-5 fill-yellow-500 text-yellow-500 transition-transform hover:scale-125" />
+                      ))}
+                    </div>
+                    <p className="text-foreground/90 mb-6 italic text-base md:text-lg leading-relaxed relative z-10">"{review.text}"</p>
+                    <div className="flex items-center gap-4 relative z-10">
+                      <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                        <span className="text-foreground font-bold">{review.name.charAt(0)}</span>
+                      </div>
+                      <p className="text-foreground font-semibold tracking-wide">{review.name}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-card to-background border-t border-border relative overflow-hidden">
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            <SparklesText
-              text="Ready for the Ultimate Detail?"
-              colors={{ first: '#FFD700', second: '#FFA500' }}
-              className="text-3xl md:text-4xl font-bold text-primary"
-            />
-          </h2>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Book your appointment today and experience the Premier Polishing difference.
-            Mobile service available throughout Memphis.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="text-lg font-semibold px-8 shadow-lg shadow-primary/20"
-            >
-              <a href="tel:901-650-8824">
-                <Phone className="h-5 w-5 mr-2" />
-                Call Now
-              </a>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="text-lg font-semibold px-8 hover:bg-primary/10 border-primary/20 hover:text-primary"
-            >
-              <Link to="/contact">Get a Quote</Link>
-            </Button>
+      <section className="py-24 bg-gradient-to-b from-card via-background to-background relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="container mx-auto px-4 text-center relative z-10 cta-container">
+          <div className="max-w-3xl mx-auto space-y-8">
+            <h2 className="gsap-cta text-4xl md:text-5xl font-bold text-foreground">
+              Ready for the <SparklesText text="Ultimate Detail?" colors={{ first: '#FFD700', second: '#FFA500' }} className="inline-block" />
+            </h2>
+            <p className="gsap-cta text-lg text-muted-foreground max-w-2xl mx-auto">
+              Book your appointment today and experience the Top Wash Approved difference.
+              Mobile service available throughout Memphis.
+            </p>
+            <div className="gsap-cta flex flex-col sm:flex-row gap-6 justify-center pt-4">
+              <div className="transition-transform duration-300 hover:scale-105 active:scale-95">
+                <Button asChild size="lg" className="h-14 text-lg font-semibold px-10 shadow-[0_0_30px_rgba(255,215,0,0.3)] hover:shadow-[0_0_50px_rgba(255,215,0,0.5)] transition-shadow duration-300 w-full sm:w-auto">
+                  <a href="tel:901-677-4116">
+                    <Phone className="h-5 w-5 mr-3 animate-pulse" />
+                    Call Now
+                  </a>
+                </Button>
+              </div>
+              <div className="transition-transform duration-300 hover:scale-105 active:scale-95">
+                <Button asChild size="lg" variant="outline" className="h-14 text-lg font-semibold px-10 border-primary/30 hover:bg-primary/10 hover:border-primary text-foreground transition-[background-color,border-color,color] duration-300 w-full sm:w-auto">
+                  <Link to="/contact">Get a Quote</Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>

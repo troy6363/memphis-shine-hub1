@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -14,19 +14,34 @@ const navLinks = [
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
+    <header className={cn(
+      "fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300",
+      isScrolled
+        ? "bg-background/60 backdrop-blur-xl border-border/50"
+        : "bg-background border-border"
+    )}>
       {/* Top bar with phone */}
       <div className="bg-primary text-primary-foreground py-2">
         <div className="container mx-auto px-4 flex justify-center md:justify-end">
           <a
-            href="tel:901-650-8824"
+            href="tel:901-677-4116"
             className="flex items-center gap-2 font-semibold hover:opacity-80 transition-opacity"
           >
             <Phone className="h-4 w-4" />
-            <span>Call Now: (901) 650-8824</span>
+            <span>Call Now: (901) 677-4116</span>
           </a>
         </div>
       </div>
@@ -34,13 +49,13 @@ const Header = () => {
       {/* Main nav */}
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
+          {/* Brand Text */}
           <Link to="/" className="flex flex-col">
-            <span className="text-xl md:text-2xl font-bold text-gold-gradient">
-              Premier Polishing
+            <span className="text-xl md:text-2xl font-bold tracking-tight">
+              Top Wash <span className="text-red-gradient">Approved</span>
             </span>
-            <span className="text-xs text-muted-foreground tracking-widest uppercase">
-              of Memphis
+            <span className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">
+              Memphis Auto Detailing
             </span>
           </Link>
 
@@ -65,7 +80,7 @@ const Header = () => {
           {/* CTA Button - Desktop */}
           <div className="hidden md:block">
             <Button asChild className="font-semibold">
-              <a href="tel:901-650-8824">
+              <a href="tel:901-677-4116">
                 <Phone className="h-4 w-4 mr-2" />
                 Book Now
               </a>
@@ -74,11 +89,11 @@ const Header = () => {
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden p-2 text-foreground"
+            className="lg:hidden p-3 text-foreground"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
           </button>
         </div>
       </div>
@@ -86,7 +101,7 @@ const Header = () => {
       {/* Mobile Nav */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-card border-t border-border">
-          <nav className="container mx-auto px-4 py-4 flex flex-col gap-2">
+          <nav className="container mx-auto px-4 py-4 pb-6 flex flex-col gap-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -103,9 +118,9 @@ const Header = () => {
               </Link>
             ))}
             <Button asChild className="mt-4 font-semibold">
-              <a href="tel:901-650-8824">
+              <a href="tel:901-677-4116">
                 <Phone className="h-4 w-4 mr-2" />
-                Call (901) 650-8824
+                Call (901) 677-4116
               </a>
             </Button>
           </nav>

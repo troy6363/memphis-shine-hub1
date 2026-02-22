@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Phone, MapPin, Clock, Facebook, Send, CheckCircle } from "lucide-react";
+import { Phone, MapPin, Clock, Facebook, Send, CheckCircle, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -41,7 +41,7 @@ const Contact = () => {
       <section className="py-24 md:py-32 bg-card">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Contact <span className="text-gold-gradient">Us</span>
+            Contact <span className="text-red-gradient">Us</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Ready to book your detail? Have questions? We're here to help.
@@ -56,7 +56,7 @@ const Contact = () => {
             {/* Contact Info */}
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-8">Get In Touch</h2>
-              
+
               <div className="space-y-6 mb-8">
                 <Card className="bg-card border-border">
                   <CardContent className="p-6 flex items-center gap-4">
@@ -66,10 +66,27 @@ const Contact = () => {
                     <div>
                       <p className="text-sm text-muted-foreground">Call or Text</p>
                       <a
-                        href="tel:901-650-8824"
+                        href="tel:901-677-4116"
                         className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
                       >
-                        (901) 650-8824
+                        (901) 677-4116
+                      </a>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-card border-border">
+                  <CardContent className="p-6 flex items-center gap-4">
+                    <div className="bg-primary/10 p-3 rounded-full">
+                      <Mail className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Email</p>
+                      <a
+                        href="mailto:info@topwashapproved.com"
+                        className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
+                      >
+                        info@topwashapproved.com
                       </a>
                     </div>
                   </CardContent>
@@ -83,12 +100,12 @@ const Contact = () => {
                     <div>
                       <p className="text-sm text-muted-foreground">Shop Location</p>
                       <a
-                        href="https://maps.google.com/?q=1920+Whitten+Rd+Memphis+TN+38133"
+                        href="https://maps.google.com/?q=318+Adams+Avenue,+Memphis,+TN"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
                       >
-                        1920 Whitten Rd, Memphis, TN 38133
+                        318 Adams Avenue, Memphis, TN
                       </a>
                     </div>
                   </CardContent>
@@ -101,8 +118,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Business Hours</p>
-                      <p className="font-semibold text-foreground">Mon-Sat: 8AM - 6PM</p>
-                      <p className="text-sm text-muted-foreground">Sun: By Appointment</p>
+                      <p className="font-semibold text-foreground">Mon-Sun: 8AM - 8PM</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -115,7 +131,7 @@ const Contact = () => {
                     <div>
                       <p className="text-sm text-muted-foreground">Follow Us</p>
                       <a
-                        href="https://facebook.com/premierpolishingofmemphis"
+                        href="https://facebook.com/topwashapproved"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
@@ -131,7 +147,7 @@ const Contact = () => {
             {/* Contact Form */}
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-8">Request a Quote</h2>
-              
+
               {submitted ? (
                 <Card className="bg-card border-border">
                   <CardContent className="p-12 text-center">
@@ -176,7 +192,7 @@ const Contact = () => {
                           />
                         </div>
                       </div>
-                      
+
                       <div>
                         <label className="block text-sm font-medium text-foreground mb-2">
                           Email
@@ -253,14 +269,14 @@ const Contact = () => {
         <div className="container mx-auto px-4">
           <div className="rounded-lg overflow-hidden border border-border">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3260.5!2d-89.8547!3d35.2017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x887f9e1b1b1b1b1b%3A0x1b1b1b1b1b1b1b1b!2s1920%20Whitten%20Rd%2C%20Memphis%2C%20TN%2038133!5e0!3m2!1sen!2sus!4v1234567890"
+              src="https://maps.google.com/maps?q=318+Adams+Avenue,+Memphis,+TN&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="400"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Premier Polishing Location"
+              title="Top Wash Approved Location"
             />
           </div>
         </div>

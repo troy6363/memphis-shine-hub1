@@ -94,7 +94,7 @@ const Services = () => {
         </div>
         <div className="relative container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Our <span className="text-gold-gradient">Services</span>
+            Our <span className="text-red-gradient">Services</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Professional detailing packages tailored to your vehicle's needs and your expectations.
@@ -109,9 +109,8 @@ const Services = () => {
             {packages.map((pkg) => (
               <Card
                 key={pkg.name}
-                className={`relative bg-card border-border ${
-                  pkg.popular ? "border-primary gold-glow" : ""
-                }`}
+                className={`relative bg-card border-border ${pkg.popular ? "border-primary red-glow" : ""
+                  }`}
               >
                 {pkg.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
@@ -144,7 +143,7 @@ const Services = () => {
                     ))}
                   </ul>
                   <Button asChild className="w-full mt-6" variant={pkg.popular ? "default" : "outline"}>
-                    <a href="tel:901-650-8824">Book Now</a>
+                    <a href="tel:901-677-4116">Book Now</a>
                   </Button>
                 </CardContent>
               </Card>
@@ -158,7 +157,7 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Add-On <span className="text-gold-gradient">Services</span>
+              Add-On <span className="text-red-gradient">Services</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Enhance your detail with these premium add-on services.
@@ -188,7 +187,7 @@ const Services = () => {
             Call us and we'll help you choose the perfect service for your vehicle.
           </p>
           <Button asChild size="lg" variant="secondary" className="font-semibold">
-            <a href="tel:901-650-8824">
+            <a href="tel:901-677-4116">
               <Phone className="h-5 w-5 mr-2" />
               Call (901) 650-8824
             </a>

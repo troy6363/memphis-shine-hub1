@@ -105,7 +105,7 @@ const PricingSwitch = ({
                     className={cn(
                         "relative z-10 w-fit cursor-pointer h-12 rounded-xl sm:px-6 px-3 sm:py-2 py-1 font-medium transition-colors sm:text-base text-sm",
                         value === "0"
-                            ? "text-black" // Text becomes dark on gold background
+                            ? "text-white" // Text becomes dark on red background
                             : "text-muted-foreground hover:text-foreground",
                     )}
                 >
@@ -188,7 +188,7 @@ export default function PricingSection5() {
                         staggerDuration={0.15}
                         staggerFrom="first"
                         reverse={true}
-                        containerClassName="justify-center text-gold-gradient"
+                        containerClassName="justify-center text-red-gradient"
                         autoStart={false}
                         transition={{
                             type: "spring",
@@ -275,9 +275,9 @@ export default function PricingSection5() {
                             </CardHeader>
 
                             <CardContent className="pt-0 flex-grow flex flex-col justify-end">
-                                <a href="tel:901-650-8824" className="w-full">
+                                <a href="tel:901-677-4116" className="w-full">
                                     <button
-                                        className={`w-full mb-6 p-4 text-lg rounded-xl transition-all duration-300 ${plan.popular
+                                        className={`w-full mb-6 p-4 text-lg rounded-xl transition-[background-color,border-color,color,box-shadow,filter] duration-300 ${plan.popular
                                             ? "bg-gradient-to-t from-primary to-primary/80 shadow-lg shadow-primary/20 border border-primary text-primary-foreground hover:brightness-110"
                                             : "bg-card border border-border text-foreground hover:bg-accent hover:text-accent-foreground"
                                             }`}

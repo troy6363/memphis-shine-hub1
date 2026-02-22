@@ -8,7 +8,7 @@ const specials = [
     icon: Gift,
     title: "First-Time Customer",
     discount: "15% OFF",
-    description: "Your first detail with Premier Polishing",
+    description: "Your first detail with Top Wash Approved",
     terms: "Valid on any service package. Cannot be combined with other offers.",
   },
   {
@@ -34,7 +34,7 @@ const Specials = () => {
       <section className="py-24 md:py-32 bg-card">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Current <span className="text-gold-gradient">Specials</span>
+            Current <span className="text-red-gradient">Specials</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Take advantage of our exclusive offers and save on premium detailing services.
@@ -73,10 +73,10 @@ const Specials = () => {
           <div className="max-w-3xl mx-auto text-center">
             <Star className="h-12 w-12 text-primary mx-auto mb-6" />
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Seasonal <span className="text-gold-gradient">Promotions</span>
+              Seasonal <span className="text-red-gradient">Promotions</span>
             </h2>
             <p className="text-muted-foreground mb-8">
-              We regularly offer seasonal specials and limited-time promotions. 
+              We regularly offer seasonal specials and limited-time promotions.
               Follow us on Facebook or call to ask about current deals!
             </p>
             <div className="bg-background border border-border rounded-lg p-8">
@@ -91,18 +91,18 @@ const Specials = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-primary">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-card to-background border-t border-border">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Ready to Save?
           </h2>
-          <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
             Mention any of these specials when you book to receive your discount.
           </p>
-          <Button asChild size="lg" variant="secondary" className="font-semibold">
-            <a href="tel:901-650-8824">
+          <Button asChild size="lg" className="font-semibold">
+            <a href="tel:901-677-4116">
               <Phone className="h-5 w-5 mr-2" />
-              Call (901) 650-8824
+              Call (901) 677-4116
             </a>
           </Button>
         </div>
