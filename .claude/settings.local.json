@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "WebFetch(domain:www.google.com)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run dev:*)"
     ]
   }
 }

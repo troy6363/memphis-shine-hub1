@@ -67,10 +67,10 @@ const About = () => {
         </div>
         <div className="relative container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            About <span className="text-red-gradient">Top Wash Approved</span>
+            About <span className="text-red-gradient">Gleam Mobile Detailing</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Memphis' trusted destination for luxury auto detailing since day one.
+            Memphis' trusted mobile auto detailing service since 2017.
           </p>
         </div>
       </section>
@@ -85,24 +85,27 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground text-base md:text-lg leading-relaxed">
                 <p>
-                  <strong className="text-foreground text-xl block mb-2">Meet Clement Jackson, Founder of Top Wash Approved.</strong>
-                  Our daily mission is simple: to earn a loyal, satisfied customer every single day. Combining unique, high-quality products with expert detailing techniques, we are dedicated to meeting your vehicle's every need.
+                  <strong className="text-foreground text-xl block mb-2">Meet Jeremy Lewis, Owner of Gleam Mobile Detailing.</strong>
+                  Since 2017, our mission has been simple: to deliver exceptional mobile detailing that exceeds expectations, one vehicle at a time. We bring premium products and expert techniques directly to your location for ultimate convenience.
                 </p>
                 <p>
-                  Beyond personal vehicles, we proudly offer contract detailing for Mobile Express Transportation services, including church vans, daycare buses, medical transport, and public transit vehicles—all at highly competitive rates.
+                  We offer our customers consistent quality service and workmanship. We offer many services such as; Full Detailing, Interior and Exterior packages, Paint correction, Ceramic coating, Headlight restoration, and Steam cleaning to name a few.
                 </p>
                 <p>
-                  For your convenience, we operate a dedicated location where you can drop off your vehicle and we'll notify you the moment it's ready for pick up. Keep an eye out for our upcoming Full Pick-Up & Drop-Off Service!
+                  We proudly serve the Memphis and Cordova, TN area with comprehensive mobile detailing services. Whether it's your daily driver, luxury vehicle, or fleet—we bring the gleam to you, wherever you are.
+                </p>
+                <p>
+                  With an A+ BBB rating and over 8 years in business, Gleam Mobile Detailing has built a reputation for quality, reliability, and customer satisfaction that speaks for itself.
                 </p>
                 <p className="text-primary font-bold italic text-xl pt-4">
-                  "Thank you for choosing Top Wash Approved."
+                  "Thank you for choosing Gleam Mobile Detailing."
                 </p>
               </div>
             </div>
             <div className="relative">
               <video
                 ref={videoRef}
-                src="/assets/about top wash.mp4"
+                src="/assets/about gleam.mp4"
                 autoPlay
                 loop
                 muted
@@ -110,7 +113,7 @@ const About = () => {
                 className="rounded-lg shadow-xl w-full transition-opacity duration-300"
               />
               <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold">
-                Professional Facility
+                Mobile Service
               </div>
             </div>
           </div>
@@ -140,16 +143,16 @@ const About = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-primary">
+      <section className="py-16 md:py-24 bg-card border-t border-border">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-            Experience the Premier Difference
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Experience the <span className="text-red-gradient">Gleam Difference</span>
           </h2>
-          <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Schedule your detail today and see why Memphis chooses Top Wash Approved.
+          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Schedule your detail today and see why Memphis chooses Gleam Mobile Detailing.
           </p>
           <Button asChild size="lg" variant="secondary" className="font-semibold">
-            <a href="tel:901-677-4116">Call (901) 650-8824</a>
+            <a href="tel:662-310-3732">Call (662) 310-3732</a>
           </Button>
         </div>
       </section>

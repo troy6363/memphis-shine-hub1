@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, MapPin, Clock, Facebook, Mail } from "lucide-react";
+import { Phone, MapPin, Clock, Facebook, Instagram, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -10,14 +10,14 @@ const Footer = () => {
           <div className="flex flex-col items-center text-center">
             <Link to="/" className="inline-block mb-4">
               <img
-                src="/assets/logo transparent.png"
-                alt="Top Wash Approved"
+                src="/assets/gleam-logo.png"
+                alt="Gleam Mobile Detailing"
                 className="h-32 md:h-40 w-auto transition-transform hover:scale-105 rounded-2xl"
                 style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}
               />
             </Link>
             <p className="text-sm text-muted-foreground italic">
-              "Experience The Top Wash Difference"
+              "We Bring The Gleam To You"
             </p>
           </div>
 
@@ -42,31 +42,19 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground mb-4">Contact</h4>
             <div className="flex flex-col gap-3">
               <a
-                href="tel:901-677-4116"
+                href="tel:662-310-3732"
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <Phone className="h-4 w-4 text-primary flex-shrink-0" />
-                (901) 677-4116
-              </a>
-              <a
-                href="mailto:info@topwashapproved.com"
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Mail className="h-4 w-4 text-primary flex-shrink-0" />
-                info@topwashapproved.com
-              </a>
-              <a
-                href="https://maps.google.com/?q=318+Adams+Avenue,+Memphis,+TN"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                <MapPin className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                <span>318 Adams Avenue<br />Memphis, TN</span>
+                (662) 310-3732
               </a>
               <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                <MapPin className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                <span>Cordova, TN 38016<br />Mobile Service - We Come To You!</span>
+              </div>
+              <div className="flex items-start gap-2 text-sm text-muted-foreground">
                 <Clock className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                <span>Mon-Sun: 8AM - 8PM</span>
+                <span>Mon-Sat: 8AM - 6PM<br />Sunday: Closed</span>
               </div>
             </div>
           </div>
@@ -74,22 +62,33 @@ const Footer = () => {
           {/* Social */}
           <div>
             <h4 className="font-semibold text-foreground mb-4">Follow Us</h4>
-            <a
-              href="https://facebook.com/topwashapproved"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              <Facebook className="h-5 w-5" />
-              Facebook
-            </a>
+            <div className="flex flex-col gap-3">
+              <a
+                href="https://facebook.com/GleamMobileDetailing17"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Facebook className="h-5 w-5" />
+                Facebook
+              </a>
+              <a
+                href="https://instagram.com/gleammobiledetailing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Instagram className="h-5 w-5" />
+                Instagram
+              </a>
+            </div>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-border text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Top Wash Approved. All rights reserved.
+            © {new Date().getFullYear()} Gleam Mobile Detailing. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground/80 mt-2">
             Powered by <a href="https://smartwebmemphis.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">SmartWeb Memphis</a>

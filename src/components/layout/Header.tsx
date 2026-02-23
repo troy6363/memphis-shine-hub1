@@ -37,11 +37,11 @@ const Header = () => {
       <div className="bg-primary text-primary-foreground py-2">
         <div className="container mx-auto px-4 flex justify-center md:justify-end">
           <a
-            href="tel:901-677-4116"
+            href="tel:662-310-3732"
             className="flex items-center gap-2 font-semibold hover:opacity-80 transition-opacity"
           >
             <Phone className="h-4 w-4" />
-            <span>Call Now: (901) 677-4116</span>
+            <span>Call Now: (662) 310-3732</span>
           </a>
         </div>
       </div>
@@ -52,10 +52,10 @@ const Header = () => {
           {/* Brand Text */}
           <Link to="/" className="flex flex-col">
             <span className="text-xl md:text-2xl font-bold tracking-tight">
-              Top Wash <span className="text-red-gradient">Approved</span>
+              Gleam Mobile <span className="text-red-gradient">Detailing</span>
             </span>
             <span className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">
-              Memphis Auto Detailing
+              Elite Mobile Detailing
             </span>
           </Link>
 
@@ -80,7 +80,7 @@ const Header = () => {
           {/* CTA Button - Desktop */}
           <div className="hidden md:block">
             <Button asChild className="font-semibold">
-              <a href="tel:901-677-4116">
+              <a href="tel:662-310-3732">
                 <Phone className="h-4 w-4 mr-2" />
                 Book Now
               </a>
@@ -118,9 +118,9 @@ const Header = () => {
               </Link>
             ))}
             <Button asChild className="mt-4 font-semibold">
-              <a href="tel:901-677-4116">
+              <a href="tel:662-310-3732">
                 <Phone className="h-4 w-4 mr-2" />
-                Call (901) 677-4116
+                Call (662) 310-3732
               </a>
             </Button>
           </nav>

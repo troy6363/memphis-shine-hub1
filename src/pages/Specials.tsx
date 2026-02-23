@@ -8,7 +8,7 @@ const specials = [
     icon: Gift,
     title: "First-Time Customer",
     discount: "15% OFF",
-    description: "Your first detail with Top Wash Approved",
+    description: "Your first detail with Gleam Mobile Detailing",
     terms: "Valid on any service package. Cannot be combined with other offers.",
   },
   {
@@ -100,9 +100,9 @@ const Specials = () => {
             Mention any of these specials when you book to receive your discount.
           </p>
           <Button asChild size="lg" className="font-semibold">
-            <a href="tel:901-677-4116">
+            <a href="tel:662-310-3732">
               <Phone className="h-5 w-5 mr-2" />
-              Call (901) 677-4116
+              Call (662) 310-3732
             </a>
           </Button>
         </div>

@@ -97,7 +97,7 @@ const Services = () => {
             Our <span className="text-red-gradient">Services</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Professional detailing packages tailored to your vehicle's needs and your expectations.
+            Professional mobile detailing packages tailored to your vehicle's needs and your expectations.
           </p>
         </div>
       </section>
@@ -143,7 +143,7 @@ const Services = () => {
                     ))}
                   </ul>
                   <Button asChild className="w-full mt-6" variant={pkg.popular ? "default" : "outline"}>
-                    <a href="tel:901-677-4116">Book Now</a>
+                    <a href="tel:662-310-3732">Book Now</a>
                   </Button>
                 </CardContent>
               </Card>
@@ -178,18 +178,19 @@ const Services = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-            Not Sure Which Package?
+      <section className="py-16 md:py-24 bg-card border-y border-primary/10 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 pointer-events-none" />
+        <div className="relative container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Not Sure Which <span className="text-red-gradient">Package?</span>
           </h2>
-          <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto text-lg">
             Call us and we'll help you choose the perfect service for your vehicle.
           </p>
-          <Button asChild size="lg" variant="secondary" className="font-semibold">
-            <a href="tel:901-677-4116">
+          <Button asChild size="lg" className="font-semibold shadow-xl shadow-primary/10">
+            <a href="tel:662-310-3732">
               <Phone className="h-5 w-5 mr-2" />
-              Call (901) 650-8824
+              Call (662) 310-3732
             </a>
           </Button>
         </div>

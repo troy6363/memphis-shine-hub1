@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Phone, MapPin, Clock, Facebook, Send, CheckCircle, Mail } from "lucide-react";
+import { Phone, MapPin, Clock, Facebook, Instagram, Send, CheckCircle, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -66,27 +66,10 @@ const Contact = () => {
                     <div>
                       <p className="text-sm text-muted-foreground">Call or Text</p>
                       <a
-                        href="tel:901-677-4116"
+                        href="tel:662-310-3732"
                         className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
                       >
-                        (901) 677-4116
-                      </a>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-card border-border">
-                  <CardContent className="p-6 flex items-center gap-4">
-                    <div className="bg-primary/10 p-3 rounded-full">
-                      <Mail className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Email</p>
-                      <a
-                        href="mailto:info@topwashapproved.com"
-                        className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
-                      >
-                        info@topwashapproved.com
+                        (662) 310-3732
                       </a>
                     </div>
                   </CardContent>
@@ -98,15 +81,11 @@ const Contact = () => {
                       <MapPin className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Shop Location</p>
-                      <a
-                        href="https://maps.google.com/?q=318+Adams+Avenue,+Memphis,+TN"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
-                      >
-                        318 Adams Avenue, Memphis, TN
-                      </a>
+                      <p className="text-sm text-muted-foreground">Service Area</p>
+                      <p className="text-lg font-semibold text-foreground">
+                        Cordova, TN 38016
+                      </p>
+                      <p className="text-sm text-muted-foreground">Mobile Service - We Come To You!</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -118,7 +97,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Business Hours</p>
-                      <p className="font-semibold text-foreground">Mon-Sun: 8AM - 8PM</p>
+                      <p className="font-semibold text-foreground">Mon-Sat: 8AM - 6PM</p>
+                      <p className="text-sm text-muted-foreground">Sunday: Closed</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -131,12 +111,31 @@ const Contact = () => {
                     <div>
                       <p className="text-sm text-muted-foreground">Follow Us</p>
                       <a
-                        href="https://facebook.com/topwashapproved"
+                        href="https://facebook.com/GleamMobileDetailing17"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
                       >
                         Facebook
+                      </a>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-card border-border">
+                  <CardContent className="p-6 flex items-center gap-4">
+                    <div className="bg-primary/10 p-3 rounded-full">
+                      <Instagram className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Follow Us</p>
+                      <a
+                        href="https://instagram.com/gleammobiledetailing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
+                      >
+                        Instagram
                       </a>
                     </div>
                   </CardContent>
@@ -188,7 +187,7 @@ const Contact = () => {
                             value={formData.phone}
                             onChange={handleChange}
                             required
-                            placeholder="(901) 555-0000"
+                            placeholder="(662) 555-0000"
                           />
                         </div>
                       </div>
@@ -269,14 +268,14 @@ const Contact = () => {
         <div className="container mx-auto px-4">
           <div className="rounded-lg overflow-hidden border border-border">
             <iframe
-              src="https://maps.google.com/maps?q=318+Adams+Avenue,+Memphis,+TN&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Memphis,+TN&t=&z=11&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="400"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Top Wash Approved Location"
+              title="Gleam Mobile Detailing Service Area"
             />
           </div>
         </div>

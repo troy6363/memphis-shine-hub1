@@ -51,18 +51,18 @@ const services = [
 
 const testimonials = [
   {
-    name: "Randy Harris",
-    text: "Good customer service and do a very good job 👍👍 Top Wash Approved...",
+    name: "U. Westbrook",
+    text: "I had a great experience! The pricing was very affordable and the quality of work was outstanding. They were thorough, professional, and paid attention to every detail. My car looks and smells brand new. I'll definitely be back and highly recommend their services!",
     rating: 5,
   },
   {
-    name: "Cristean Crockett",
-    text: "Great customer service!! Very professional!! Top Notch Work",
+    name: "Kendall SisTrunk",
+    text: "Jeremy was very professional and punctual with his services. Also, my car has never been so clean in its life it looks like I just bought it again.",
     rating: 5,
   },
   {
-    name: "Marcus J.",
-    text: "Top Notch service. These guys treat your car like it's their own. Highly recommend!",
+    name: "Ashley Akin",
+    text: "I am extremely happy with my experience with Gleam Mobile Detailing. I requested his services to detail my mother's car for her birthday. Her car was dirty! I am in complete shock and awe at how amazing her car looks. It looks show room ready! He took his time and it shows! He is a very pleasant man with reasonable pricing and I have enjoyed this experience beyond words! I highly recommend Jeremy! You won't be disappointed!",
     rating: 5,
   },
 ];
@@ -75,15 +75,15 @@ const trustBadges = [
 ];
 
 const galleryImages = [
-  { type: "image", src: "/assets/gmb-gallery-1.jpg", alt: "Top Wash Approved Exterior" },
-  { type: "image", src: "/assets/gmb-gallery-2.jpg", alt: "Top Wash Approved Detail" },
-  { type: "image", src: "/assets/gmb-gallery-3.jpg", alt: "Top Wash Approved Interior" },
-  { type: "image", src: "/assets/truck2.webp", alt: "Detail Truck 2" },
-  { type: "video", src: "/assets/premierpolishing1-1.mp4", alt: "Top Wash Approved Process" },
-  { type: "image", src: "/assets/car3.webp", alt: "Detail Car 3" },
-  { type: "image", src: "/assets/truck1.png", alt: "Detail Truck 1" },
-  { type: "image", src: "/assets/truck1.webp", alt: "Detail Truck 1" },
-  { type: "image", src: "/assets/car5.webp", alt: "Detail Car 5" },
+  { type: "image", src: "/assets/1.jpg", alt: "Gleam Mobile Detailing Exterior" },
+  { type: "image", src: "/assets/2.jpg", alt: "Gleam Mobile Detailing Detail" },
+  { type: "image", src: "/assets/3.jpg", alt: "Gleam Mobile Detailing Interior" },
+  { type: "image", src: "/assets/4.jpg", alt: "Gleam Mobile Detailing Work" },
+  { type: "video", src: "/assets/premierpolishing1-1.mp4", alt: "Gleam Mobile Detailing Process" },
+  { type: "image", src: "/assets/5.jpg", alt: "Gleam Mobile Detailing Result" },
+  { type: "image", src: "/assets/6.jpg?v=2", alt: "Gleam Mobile Detailing Showcase" },
+  { type: "image", src: "/assets/7.jpg?v=2", alt: "Gleam Mobile Detailing Premium" },
+  { type: "image", src: "/assets/8.jpg", alt: "Gleam Mobile Detailing Finish" },
 ];
 
 const Index = () => {
@@ -290,12 +290,12 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-2xl text-white hero-content-wrapper">
               <p className="hero-text-element text-primary font-semibold tracking-widest uppercase mb-4 opacity-0 translate-y-8">
-                Top Wash Approved
+                Gleam Mobile Detailing
               </p>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-                <span className="hero-text-element block opacity-0 translate-y-8">Experience The</span>
+                <span className="hero-text-element block opacity-0 translate-y-8">We Bring The</span>
                 <span className="text-red-gradient inline-block mt-2">
-                  {"Top Wash Difference".split("").map((char, index) => (
+                  {"Gleam To You".split("").map((char, index) => (
                     <span
                       key={index}
                       className="hero-char-element opacity-0"
@@ -306,16 +306,16 @@ const Index = () => {
                 </span>
               </h1>
               <p className="hero-text-element text-base md:text-lg lg:text-xl text-gray-200 mb-8 max-w-xl opacity-0 translate-y-8">
-                Professional auto detailing for all vehicles. We bring showroom quality
-                to your ride with meticulous attention to detail.
+                Premium mobile auto detailing at your convenience. We come to you
+                with meticulous attention to detail and showroom-quality results.
               </p>
               <div className="hero-text-element flex flex-col sm:flex-row gap-4 opacity-0 translate-y-8">
                 <div className="relative group button-magnetic-wrapper inline-block">
                   <Button asChild size="lg" className="text-base md:text-lg font-semibold px-6 md:px-8 shadow-xl shadow-primary/30 w-full sm:w-auto relative group overflow-hidden transition-transform duration-300">
-                    <a href="tel:901-677-4116">
+                    <a href="tel:662-310-3732">
                       <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
                       <Phone className="h-5 w-5 mr-2" />
-                      Call (901) 677-4116
+                      Call (662) 310-3732
                     </a>
                   </Button>
                 </div>
@@ -365,7 +365,7 @@ const Index = () => {
               Our <span className="text-red-gradient">Work</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              See the Top Wash Approved difference. Every vehicle receives meticulous attention to detail.
+              See the Gleam Mobile Detailing difference. Every vehicle receives meticulous attention to detail.
             </p>
           </div>
           <div
@@ -454,13 +454,13 @@ const Index = () => {
               Ready for the <SparklesText text="Ultimate Detail?" colors={{ first: '#FFD700', second: '#FFA500' }} className="inline-block" />
             </h2>
             <p className="gsap-cta text-lg text-muted-foreground max-w-2xl mx-auto">
-              Book your appointment today and experience the Top Wash Approved difference.
-              Mobile service available throughout Memphis.
+              Book your appointment today and experience the Gleam Mobile Detailing difference.
+              Mobile service available throughout Memphis and the Mid-South area.
             </p>
             <div className="gsap-cta flex flex-col sm:flex-row gap-6 justify-center pt-4">
               <div className="transition-transform duration-300 hover:scale-105 active:scale-95">
                 <Button asChild size="lg" className="h-14 text-lg font-semibold px-10 shadow-[0_0_30px_rgba(255,215,0,0.3)] hover:shadow-[0_0_50px_rgba(255,215,0,0.5)] transition-shadow duration-300 w-full sm:w-auto">
-                  <a href="tel:901-677-4116">
+                  <a href="tel:662-310-3732">
                     <Phone className="h-5 w-5 mr-3 animate-pulse" />
                     Call Now
                   </a>
